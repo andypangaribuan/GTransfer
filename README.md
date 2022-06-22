@@ -21,8 +21,7 @@ Build with:
 ```shell
 docker build -t andypangaribuan/gtransfer .
 ```
-Please refer to <a href="https://github.com/andypangaribuan/GTransfer/blob/main/docker-compose-template.yaml">docker-compose-template.yaml</a>  
-Rename file to docker-compose.yaml
+Please refer to <a href="https://github.com/andypangaribuan/GTransfer/blob/main/docker-compose.yaml">docker-compose.yaml</a>
 
 
 ## 👀 Integration
