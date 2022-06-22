@@ -22,8 +22,8 @@ services:
       - SMB_SHARED_NAME=your-shared-name # dir name to access this shared folder, e.q. {IP}/{SHARED_DIR_NAME}
       - SFTP_USER=your-sftp-user
       - SFTP_PASSWORD=your-sftp-password
-      - SFTP_ROOT_DIR=/gtransfer # SFTP_CHROOT_DIR + SFTP_INIT_DIR => one part
-      - SFTP_INIT_DIR=/files # SFTP_CHROOT_DIR + SFTP_INIT_DIR => one part
+      - SFTP_ROOT_DIR=/gtransfer # SFTP_ROOT_DIR + SFTP_INIT_DIR => one part
+      - SFTP_INIT_DIR=/files # SFTP_ROOT_DIR + SFTP_INIT_DIR => one part
     volumes:
       - ./service-account.json:/.gtransfer/service-account.json:ro # VID1
       # - ./mount-internal-host:/gtransfer/files:shared
