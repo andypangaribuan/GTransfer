@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+
+  gtransfer:
+    image: andypangaribuan/gtransfer:latest
+    container_name: gtransfer
+    restart: always
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    ports:
+      - 911:445
+      - 811:900
+    environment:
+      - GCS_BUCKET_NAME=your-bucket-name
+      - GCS_SA_PATH=/.gtransfer/service-account.json # ref:VID1
+      - GCS_MOUNT_PATH=/gtransfer/files # internal storage path (on container) to mount the gcs
+      - GCS_ONLY_DIR=your/directory/path # optional, refer to path on bucket
+      - SMB_USER=your-smb-user
+      - SMB_PASSWORD=your-smb-password
+      - SMB_SHARED_NAME=your-shared-name # dir name to access this shared folder, e.q. {IP}/{SHARED_DIR_NAME}
+      - SFTP_USER=your-sftp-user
+      - SFTP_PASSWORD=your-sftp-password
+      - SFTP_ROOT_DIR=/gtransfer # SFTP_CHROOT_DIR + SFTP_INIT_DIR => one part
+      - SFTP_INIT_DIR=/files # SFTP_CHROOT_DIR + SFTP_INIT_DIR => one part
+    volumes:
+      - ./service-account.json:/.gtransfer/service-account.json:ro # VID1
+      # - ./mount-internal-host:/gtransfer/files:shared
+
+# force unmount the drive: $ sudo umount ./mount-internal-host
