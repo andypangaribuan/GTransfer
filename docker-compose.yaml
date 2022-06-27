@@ -1,9 +1,11 @@
 version: "3.8"
 
+# force unmount the drive: $ sudo umount {dir path}
+
 services:
 
   gtransfer:
-    image: andypangaribuan/gtransfer:latest
+    image: andypangaribuan/gtransfer:1.0.1
     container_name: gtransfer
     restart: always
     privileged: true
@@ -27,5 +29,3 @@ services:
     volumes:
       - ./service-account.json:/.gtransfer/service-account.json:ro # VID1
       # - ./mount-internal-host:/gtransfer/files:shared
-
-# force unmount the drive: $ sudo umount ./mount-internal-host

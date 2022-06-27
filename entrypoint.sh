@@ -35,7 +35,7 @@ fi
 
 if $have_smb; then
 	init_smb=/.init_smb
-	if [ ! -f $init_smb ]; then``
+	if [ ! -f $init_smb ]; then
 		adduser -S $SMB_USER -G root -G disk
 		echo -e "$SMB_PASSWORD\n$SMB_PASSWORD" | smbpasswd -s -a $SMB_USER
 		echo "1" > $init_smb
